@@ -1,0 +1,10 @@
+// ============================================================================
+// build.gradle (raiz do projeto)
+// ----------------------------------------------------------------------------
+// Declara os plugins disponíveis para todos os módulos do projeto.
+// ============================================================================
+
+plugins {
+    // "apply false" -> o plugin fica disponível, mas é aplicado no módulo :app.
+    id 'com.android.application' version '8.5.0' apply false
+}

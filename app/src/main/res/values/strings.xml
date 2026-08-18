@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    strings.xml
+    ====
+    Centraliza TODOS os textos visíveis ao usuário (em português do Brasil).
+    Manter as strings aqui é boa prática do Android: facilita tradução,
+    manutenção e reutilização.
+-->
+<resources>
+
+    <!-- Nome do aplicativo (aparece no ícone / barra de título) -->
+    <string name="app_name">Previsão do Tempo</string>
+
+    <!-- Título exibido no topo do cartão -->
+    <string name="titulo_app">🌤️ Previsão do Tempo</string>
+
+    <!-- Dicas (hints) dos campos de entrada -->
+    <string name="hint_latitude">Latitude (ex.: -20.9057)</string>
+    <string name="hint_longitude">Longitude (ex.: -48.4795)</string>
+
+    <!-- Textos dos botões -->
+    <string name="botao_buscar">Buscar</string>
+    <string name="botao_minha_localizacao">📍 Usar minha localização</string>
+
+    <!--
+        Rótulos com placeholders:
+        %1$d  -> número inteiro (umidade)
+        %1$.1f -> número decimal com 1 casa (pressão)
+    -->
+    <string name="rotulo_umidade">Umidade: %1$d%%</string>
+    <string name="rotulo_pressao">Pressão: %1$.1f hPa</string>
+
+    <!-- Mensagens de erro e avisos -->
+    <string name="erro_coordenadas_vazias">Preencha a latitude e a longitude.</string>
+    <string name="erro_coordenadas_invalidas">Coordenadas inválidas. Use apenas números.</string>
+    <string name="permissao_negada">Permissão de localização negada. Digite as coordenadas manualmente.</string>
+    <string name="erro_localizacao_indisponivel">Não foi possível obter sua localização atual. Tente novamente ou use coordenadas manuais.</string>
+    <string name="erro_localizacao_falhou">Falha ao acessar o GPS. Verifique se a localização está ativada.</string>
+
+</resources>

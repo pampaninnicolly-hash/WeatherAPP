@@ -1,0 +1,58 @@
+// ============================================================================
+// build.gradle (módulo :app)
+// ----------------------------------------------------------------------------
+// Configura como o módulo do aplicativo é compilado e quais bibliotecas usa.
+// ============================================================================
+
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    // Namespace do app (usado para gerar a classe R e o BuildConfig).
+    namespace 'com.example.weatherapp'
+
+    // Versão do SDK usada para compilar (Android 14 = API 34).
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.weatherapp"
+        minSdk 24        // API mínima: Android 7.0 (conforme solicitado)
+        targetSdk 34     // API alvo: Android 14
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            // Sem minificação para manter o projeto didático simples.
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
+        }
+    }
+
+    // Java 8: necessário para expressões lambda usadas no código.
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    // AndroidX base e AppCompat (compatibilidade de Activity/temas).
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.core:core:1.13.1'
+    implementation 'androidx.activity:activity:1.9.0' // ActivityResultLauncher
+
+    // Material Design 3 (componentes de interface).
+    implementation 'com.google.android.material:material:1.12.0'
+
+    // Retrofit 2 — chamadas HTTP declarativas.
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    // Conversor Gson — transforma JSON em objetos Java.
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // Google Play Services Location — FusedLocationProviderClient (GPS).
+    implementation 'com.google.android.gms:play-services-location:21.2.0'
+}

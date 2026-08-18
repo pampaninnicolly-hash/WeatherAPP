@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ícone de primeiro plano: um sol simples desenhado como vetor. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#FFEB3B"
+        android:pathData="M54,38 A16,16 0 1,0 54.01,38 Z" />
+    <group>
+        <path android:fillColor="#FFEB3B" android:pathData="M52,18 h4 v10 h-4 z" />
+        <path android:fillColor="#FFEB3B" android:pathData="M52,80 h4 v10 h-4 z" />
+        <path android:fillColor="#FFEB3B" android:pathData="M18,52 h10 v4 h-10 z" />
+        <path android:fillColor="#FFEB3B" android:pathData="M80,52 h10 v4 h-10 z" />
+    </group>
+</vector>

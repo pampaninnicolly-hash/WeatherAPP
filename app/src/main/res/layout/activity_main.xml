@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_main.xml
+    ====
+    Layout da tela principal (a View do MVC). Estrutura:
+      - ScrollView externo (permite rolar em telas pequenas)
+        - MaterialCardView (cartão com sombra, no estilo Material Design 3)
+          - LinearLayout vertical com:
+              * Título
+              * Campos de latitude/longitude + botão "Buscar"
+              * Botão "Usar minha localização"
+              * ProgressBar (carregando)
+              * Bloco de dados do clima (cidade, temperatura, etc.)
+              * TextView de erro
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#E3F2FD">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Título do aplicativo -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/titulo_app"
+                android:textColor="#1976D2"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:paddingBottom="16dp" />
+
+            <!-- Campo: Latitude -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_latitude">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLatitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberSigned|numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Campo: Longitude -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/hint_longitude">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLongitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberSigned|numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Botão: Buscar (coordenadas manuais) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/botao_buscar"
+                app:backgroundTint="#1976D2" />
+
+            <!-- Botão: Usar minha localização (GPS) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMyLocation"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/botao_minha_localizacao"
+                app:strokeColor="#1976D2"
+                android:textColor="#1976D2" />
+
+            <!-- Indicador de carregamento (aparece durante a busca) -->
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:visibility="gone" />
+
+            <!-- Bloco com os dados do clima (inicialmente escondido) -->
+            <LinearLayout
+                android:id="@+id/contentGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginTop="24dp"
+                android:visibility="gone">
+
+                <!-- Nome da cidade -->
+                <TextView
+                    android:id="@+id/tvCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#1976D2"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="Bebedouro - São Paulo" />
+
+                <!-- Temperatura aparente (destaque) -->
+                <TextView
+                    android:id="@+id/tvTemperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="#0D47A1"
+                    android:textSize="48sp"
+                    android:textStyle="bold"
+                    tools:text="28.5°C" />
+
+                <!-- Descrição do tempo (com emoji) -->
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#455A64"
+                    android:textSize="18sp"
+                    tools:text="Céu limpo ☀️" />
+
+                <!-- Umidade -->
+                <TextView
+                    android:id="@+id/tvHumidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:textColor="#455A64"
+                    android:textSize="16sp"
+                    tools:text="Umidade: 65%" />
+
+                <!-- Pressão -->
+                <TextView
+                    android:id="@+id/tvPressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="#455A64"
+                    android:textSize="16sp"
+                    tools:text="Pressão: 1013.2 hPa" />
+            </LinearLayout>
+
+            <!-- Mensagem de erro (inicialmente escondida) -->
+            <TextView
+                android:id="@+id/tvError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textColor="#C62828"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</ScrollView>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    AndroidManifest.xml
+    ====
+    Arquivo de configuração do app. Declara:
+      - As PERMISSÕES necessárias (internet e localização);
+      - O componente principal (MainActivity) e qual é a tela inicial (LAUNCHER).
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.weatherapp">
+
+    <!-- Permissão para acessar a internet (necessária para as chamadas às APIs) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Permissões de localização (GPS preciso e aproximado) para o botão "Usar minha localização" -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.WeatherApp">
+
+        <!-- Activity principal: é a tela que abre ao iniciar o app -->
+        <activity
+            android:name="com.example.weatherapp.view.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
